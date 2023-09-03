@@ -22,6 +22,8 @@ def main():
     clock = p.time.Clock()
     screen.fill(p.Color('white'))
     gs = ChessEngine.GameState()
+
+    
     load_images()
     print(gs.board)
     running = True
