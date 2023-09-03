@@ -33,7 +33,7 @@ class GameState():
                     piece = self.board[r][c][1]
                     if piece == "p":
                         self.getPawnMoves(r,c,moves)
-
+        return moves
     def getPawnMoves(self, r, c, moves):
         pass
 

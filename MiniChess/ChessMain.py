@@ -22,13 +22,14 @@ def main():
     clock = p.time.Clock()
     screen.fill(p.Color('white'))
     gs = ChessEngine.GameState()
-
-    
+    validMoves = gs.getValidMoves()
+    moveMade = False
     load_images()
-    print(gs.board)
+    # print(gs.board)
     running = True
     sqSelected = ()
     playerClicks = []
+
     while running:
         for e in p.event.get():
             if e.type == p.QUIT:
@@ -47,14 +48,18 @@ def main():
                 if len(playerClicks) == 2:
                     move = ChessEngine.Move(playerClicks[0], playerClicks[1], gs.board)
                     print(move.getChessNotation())
-                    gs.makeMove(move)
+                    if move in validMoves:
+                        gs.makeMove(move)
+                        moveMade = True
                     sqSelected = ()
                     playerClicks = []
 
-
-        print("working")
+        if moveMade:
+            validMoves = gs.getValidMoves()
+            moveMade = False
+        # print("working")
         draw_game_state(screen, gs)
-        print("working2")
+        # print("working2")
         clock.tick(MAX_FPS)
         p.display.flip()
 
