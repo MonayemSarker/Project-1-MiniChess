@@ -48,8 +48,8 @@ class GameState():
 
         # pawn promotion
 
-    # if move.is_pawn_promotion:
-    # self.board[move.endRow][move.endCol] = move.pieceMoved[0] + "Q"
+        if move.is_pawn_promotion:
+            self.board[move.endRow, move.endCol] = move.pieceMoved[0] + "Q"
 
     def squareAttack(self, r, c):
         self.whiteToMove = not self.whiteToMove  # switch to opponent's move
